@@ -1,9 +1,9 @@
-* Play Routes Mode
+* Play Mode
   syntax highlightning for play routes file.
 
 * Installation
   Use the convenient packages in Melpa
   #+BEGIN_SRC emacs-lisp
 
-  (require 'play-routes-mode)
+  (require 'play-mode)
   #+END_SRC 

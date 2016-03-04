@@ -1,6 +1,6 @@
-(defvar play-routes-mode-hook nil)
+(defvar play-mode-hook nil)
 
-(add-to-list 'auto-mode-alist '("/routes\\'" . play-routes-mode))
+(add-to-list 'auto-mode-alist '("/routes\\'" . play-mode))
 
 (setq routes-keywords '("GET" "POST" "DELETE" "PUT" "HEAD" "OPTIONS"))
 (setq routes-keywords-regexp (regexp-opt routes-keywords 'words))
@@ -13,9 +13,9 @@
         (,routes-keywords-regexp . font-lock-keyword-face)
 ))
 
-(define-derived-mode play-routes-mode fundamental-mode
+(define-derived-mode play-mode fundamental-mode
   (setq font-lock-defaults '(routes-highlights))
     (setq mode-name "routes"))
 
 
-(provide 'play-routes-mode)
+(provide 'play-mode)
