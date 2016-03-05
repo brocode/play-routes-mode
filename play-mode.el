@@ -11,27 +11,30 @@
 ;;; Commentary:
 
 ;; This package provides basic support for the play framework
-(defvar play-mode-hook nil)
+
+;;; Code:
+
+
+(defvar play-mode-routes-keywords '("GET" "POST" "DELETE" "PUT" "HEAD" "OPTIONS"))
+(defvar play-mode-routes-keywords-regexp (regexp-opt play-mode-routes-keywords 'words))
+
+(defvar play-mode-routes-highlights
+  `(
+    (":[^ /]+" . font-lock-variable-name-face)
+    ("\\([a-zA-Z][a-zA-Z0-9]*\\)\\(:\\|=\\)" 1 font-lock-variable-name-face)
+    (,play-mode-routes-keywords-regexp . font-lock-keyword-face)
+    ))
 
 ;;;###autoload
-(add-to-list 'auto-mode-alist '("/routes\\'" . play-mode))
+(define-derived-mode play-routes-mode fundamental-mode " PlayRoutes"
+  "Major mode for Play Framework routes files."
+  (setq font-lock-defaults '(play-mode-routes-highlights)))
 
-(defvar play-mode/routes-keywords '("GET" "POST" "DELETE" "PUT" "HEAD" "OPTIONS"))
-(defvar play-mode/routes-keywords-regexp (regexp-opt play-mode/routes-keywords 'words))
-
-(defvar play-mode/routes-highlights
-     `(
-        ("#.*" . font-lock-comment-face)
-        (":[^ /]+" . font-lock-variable-name-face)
-        ("\\([a-zA-Z][a-zA-Z0-9]*\\)\\(:\\|=\\)" 1 font-lock-variable-name-face)
-        (,play-mode/routes-keywords-regexp . font-lock-keyword-face)
-))
+(modify-syntax-entry ?# "<   " play-routes-mode-syntax-table)
+(modify-syntax-entry ?\n ">   " play-routes-mode-syntax-table)
 
 ;;;###autoload
-(define-derived-mode play-mode fundamental-mode
-  (setq font-lock-defaults '(play-mode/routes-highlights))
-    (setq mode-name "routes"))
-
+(add-to-list 'auto-mode-alist '("/routes\\'" . play-routes-mode))
 
 (provide 'play-mode)
 ;;; play-mode.el ends here
