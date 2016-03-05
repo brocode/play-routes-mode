@@ -15,13 +15,20 @@
 ;;; Code:
 
 
-(defvar play-routes-mode-keywords '("GET" "POST" "DELETE" "PUT" "HEAD" "OPTIONS"))
-(defvar play-routes-mode-keywords-regexp (regexp-opt play-routes-mode-keywords 'words))
+(defconst play-routes-mode-keywords '("GET" "POST" "DELETE" "PUT" "HEAD" "OPTIONS"))
+(defconst play-routes-mode-keywords-regexp (regexp-opt play-routes-mode-keywords 'words))
+(defconst play-routes-mode-path-variable-regex (rx ?/ (group (any ?: ?* ?$) (one-or-more (not (any whitespace ?/))))))
+(defconst play-routes-mode-arg-variable-regex (rx
+                                               (or ?, ?\( (seq ?, (zero-or-more whitespace)))
+                                               (group (or lower upper) (zero-or-more alnum))
+                                               (group (or ?: (seq (zero-or-more whitespace) ?=) ?\)))
+                                              )
+)
 
 (defvar play-routes-mode-highlights
   `(
-    (":[^ /]+" . font-lock-variable-name-face)
-    ("\\([a-zA-Z][a-zA-Z0-9]*\\)\\(:\\|=\\)" 1 font-lock-variable-name-face)
+    (,play-routes-mode-path-variable-regex 1 font-lock-variable-name-face)
+    (,play-routes-mode-arg-variable-regex 1 font-lock-variable-name-face)
     (,play-routes-mode-keywords-regexp . font-lock-keyword-face)
     ))
 
