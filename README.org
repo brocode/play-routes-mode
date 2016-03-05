@@ -3,6 +3,9 @@
 
 * Installation
   Use the convenient packages in Melpa
+  
+  [[http://melpa.org/#/play-routes-mode][file:http://melpa.org/packages/play-routes-mode-badge.svg]]
+  
   #+BEGIN_SRC emacs-lisp
 
   (require 'play-routes-mode)
