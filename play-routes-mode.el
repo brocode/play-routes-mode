@@ -35,7 +35,10 @@
 ;;;###autoload
 (define-derived-mode play-routes-mode fundamental-mode " PlayRoutes"
   "Major mode for Play Framework routes files."
-  (setq font-lock-defaults '(play-routes-mode-highlights)))
+  (setq font-lock-defaults '(play-routes-mode-highlights))
+  (set (make-local-variable 'comment-start) "# ")
+  (set (make-local-variable 'comment-start-skip) "#+ *")
+)
 
 (modify-syntax-entry ?# "<   " play-routes-mode-syntax-table)
 (modify-syntax-entry ?\n ">   " play-routes-mode-syntax-table)
