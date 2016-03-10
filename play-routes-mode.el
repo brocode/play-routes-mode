@@ -33,7 +33,7 @@
     ))
 
 ;;;###autoload
-(define-derived-mode play-routes-mode fundamental-mode " PlayRoutes"
+(define-derived-mode play-routes-mode prog-mode "PlayRoutes"
   "Major mode for Play Framework routes files."
   (setq font-lock-defaults '(play-routes-mode-highlights))
   (set (make-local-variable 'comment-start) "# ")
