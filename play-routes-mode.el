@@ -14,6 +14,23 @@
 
 ;;; Code:
 
+(defun play-routes-open-route () "Open route in browser"
+       (interactive)
+       (let (
+             (line (thing-at-point 'line t))
+             (route-regex (rx (seq bol (zero-or-more white) (one-or-more alpha)) (zero-or-more whitespace) (group (one-or-more (not white))) (one-or-more any) eol))
+            )
+         (if (string-match route-regex line)
+             (let ((path (match-string 1 line)))
+               (browse-url (concat play-routes-protocol "://" play-routes-host ":" play-routes-port path))
+             )
+             (message "no route at point"))
+       )
+)
+
+(defvar play-routes-host "localhost" "Play host to open routes")
+(defvar play-routes-port "9000" "Play port to open routes")
+(defvar play-routes-protocol "http" "Play protocol to open routes")
 
 (defconst play-routes-mode-keywords '("GET" "POST" "DELETE" "PUT" "HEAD" "OPTIONS"))
 (defconst play-routes-mode-keywords-regexp (regexp-opt play-routes-mode-keywords 'words))
@@ -31,6 +48,12 @@
     (,play-routes-mode-arg-variable-regex 1 font-lock-variable-name-face)
     (,play-routes-mode-keywords-regexp . font-lock-keyword-face)
     ))
+
+(defvar play-routes-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "C-c o") 'play-routes-open-route)
+    map)
+     "Keymap for `play-routes-mode'.")
 
 ;;;###autoload
 (define-derived-mode play-routes-mode prog-mode "PlayRoutes"
