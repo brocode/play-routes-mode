@@ -51,7 +51,7 @@
 
 (defvar play-routes-mode-map
   (let ((map (make-sparse-keymap)))
-    (define-key map (kbd "C-c o") 'play-routes-open-route)
+    (define-key map (kbd "C-c C-o") 'play-routes-open-route)
     map)
      "Keymap for `play-routes-mode'.")
 
