@@ -14,6 +14,10 @@
 
 ;;; Code:
 
+(defvar play-routes-host "localhost" "Play host to open routes")
+(defvar play-routes-port "9000" "Play port to open routes")
+(defvar play-routes-protocol "http" "Play protocol to open routes")
+
 (defun play-routes-open-route () "Open route in browser"
        (interactive)
        (let (
@@ -27,10 +31,6 @@
              (message "no route at point"))
        )
 )
-
-(defvar play-routes-host "localhost" "Play host to open routes")
-(defvar play-routes-port "9000" "Play port to open routes")
-(defvar play-routes-protocol "http" "Play protocol to open routes")
 
 (defconst play-routes-mode-keywords '("GET" "POST" "DELETE" "PUT" "HEAD" "OPTIONS"))
 (defconst play-routes-mode-keywords-regexp (regexp-opt play-routes-mode-keywords 'words))
