@@ -1,5 +1,7 @@
 * Play Routes Mode
-  syntax highlightning for play routes file.
+  syntax highlighting for play routes file.
+
+  [[https://travis-ci.org/brocode/play-routes-mode][file:https://travis-ci.org/brocode/play-routes-mode.svg?branch=master]]
 
 * Installation
   Use the convenient packages in Melpa
