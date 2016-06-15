@@ -9,3 +9,5 @@ env:
   - EVM_EMACS=emacs-24.5-travis
 script:
   - cask build
+  - cask exec ecukes
+  - cask exec ert-runner

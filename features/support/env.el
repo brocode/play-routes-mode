@@ -14,6 +14,7 @@
 (require 'play-routes-mode)
 (require 'espuds)
 (require 'ert)
+(require 'ert-expectations)
 
 (Setup
  ;; Before anything has run
