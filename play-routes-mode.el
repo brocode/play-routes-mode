@@ -18,9 +18,10 @@
   "Play host to open routes"
   :type 'string
   :group 'play-routes)
-(defcustom play-routes-port "9000"
+
+(defcustom play-routes-port 9000
   "Play port to open routes"
-  :type 'string
+  :type 'number
   :group 'play-routes)
 
 (defcustom play-routes-protocol "http"
@@ -36,7 +37,7 @@
             )
          (if (string-match route-regex line)
              (let ((path (match-string 1 line)))
-               (browse-url (concat play-routes-protocol "://" play-routes-host ":" play-routes-port path))
+               (browse-url (concat play-routes-protocol "://" play-routes-host ":" (number-to-string play-routes-port) path))
              )
              (message "no route at point"))
        )
