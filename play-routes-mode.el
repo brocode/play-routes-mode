@@ -14,9 +14,19 @@
 
 ;;; Code:
 
-(defvar play-routes-host "localhost" "Play host to open routes")
-(defvar play-routes-port "9000" "Play port to open routes")
-(defvar play-routes-protocol "http" "Play protocol to open routes")
+(defcustom play-routes-host "localhost"
+  "Play host to open routes"
+  :type 'string
+  :group 'play-routes)
+(defcustom play-routes-port "9000"
+  "Play port to open routes"
+  :type 'string
+  :group 'play-routes)
+
+(defcustom play-routes-protocol "http"
+  "Play protocol to open routes"
+  :type 'string
+  :group 'play-routes)
 
 (defun play-routes-open-route () "Open route in browser"
        (interactive)
