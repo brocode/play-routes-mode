@@ -14,6 +14,10 @@
 
 ;;; Code:
 
+(defgroup play-routes nil
+  "Play routes file support"
+  :group 'tools)
+
 (defcustom play-routes-host "localhost"
   "Play host to open routes"
   :type 'string
