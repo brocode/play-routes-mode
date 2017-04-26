@@ -42,7 +42,7 @@
                (browse-url (concat play-routes-protocol "://" play-routes-host ":" (number-to-string play-routes-port) path)))
            (message "no route at point"))))
 
-(defconst play-routes-mode-keywords '("GET" "POST" "DELETE" "PUT" "HEAD" "OPTIONS"))
+(defconst play-routes-mode-keywords '("GET" "POST" "DELETE" "PUT" "HEAD" "OPTIONS" "PATCH"))
 (defconst play-routes-mode-keywords-regexp (regexp-opt play-routes-mode-keywords 'words))
 (defconst play-routes-mode-path-variable-regex (rx ?/ (group (any ?: ?* ?$) (one-or-more (not (any whitespace ?/))))))
 (defconst play-routes-mode-arg-variable-regex (rx (or ?, ?\( (seq ?, (zero-or-more whitespace)))
